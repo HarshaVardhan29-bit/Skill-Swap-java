@@ -1,0 +1,9 @@
+bin/
+*.class
+*.jar
+!lib/*.jar
+.DS_Store
+.idea/
+*.iml
+.vscode/
+manifest.txt
