@@ -7,6 +7,9 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
     steps:
       - uses: actions/checkout@v4
 
@@ -40,3 +43,23 @@ jobs:
           path: |
             SkillSwap.jar
             lib/
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: v1.0.0
+          name: SkillSwap v1.0.0 - Desktop App
+          body: |
+            ## SkillSwap — Peer-to-Peer Student Skill Exchange
+
+            A desktop application built with Pure Java (JDK 8+), Java Swing/AWT, H2 Embedded Database (JDBC), and BCrypt password hashing following the MVC architecture.
+
+            ### How to Run
+            1. Download `SkillSwap.jar` and the `lib/` folder
+            2. Place them in the same directory
+            3. Run: `java -jar SkillSwap.jar`
+
+            > Requires Java 8 or higher installed on your system.
+          files: |
+            SkillSwap.jar
+          token: ${{ secrets.GITHUB_TOKEN }}
